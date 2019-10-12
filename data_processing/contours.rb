@@ -73,7 +73,7 @@ def get_common_segments(counties, contours)
 
   {
     segments: to_separate,
-    errors: errrors,
+    errors: errors,
   }
 end
 
