@@ -73,37 +73,6 @@
         var centersLayer = L.layerGroup([]).addTo(map)
         var centers = getCenters(contours)
         showCenters(centersLayer, centers)
-
-        for (var i in info) {
-          info[i]['resedinta'] = {
-            nume: info[i]['resedinta'],
-            lat: info[i]['lat'],
-            lon: info[i]['lon']
-          }
-          delete info[i]['lat']
-          delete info[i]['lon']
-          for (var j in centers) {
-            if (centers[j].code == info[i]['cod_judet']) {
-              info[i]['centru'] = {
-                lat: centers[j].lat,
-                lon: centers[j].lon
-              }
-            }
-          }
-        }
-
-        for (var id in contours.features) {
-          var county = contours.features[id];
-          var boundaries = getPolygonBoundaries(county.geometry.coordinates[0])
-          for (var i in info) {
-            if (info[i]['cod_judet'] == county.properties.mnemonic) {
-              info[i]['limite'] = {
-                lat: [boundaries[0][1], boundaries[1][1]],
-                lon: [boundaries[0][0], boundaries[1][0]],
-              }
-            }
-          }
-        }
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
