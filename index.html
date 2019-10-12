@@ -67,21 +67,21 @@
       }
 
       $.getJSON("./data/judete.json", function(json) {
-        L.geoJSON([json], {
-          style: function (feature) {
-            return {
-              weight: 2,
-              color: "#999",
-              opacity: 1,
-              fillColor: "#B0DE5C",
-              fillOpacity: 0.8
-            }
-          },
-
-          onEachFeature: onEachFeature,
-
-        }).addTo(map);
-          
+        for (var id in json.features) {
+          var county = json.features[id];
+          L.geoJSON([county], {
+            style: function (feature) {
+              return {
+                weight: 2,
+                color: "#999",
+                fillColor: "#B0DE5C",
+                opacity: 1,
+                fillOpacity: 0.8
+              }
+            },
+            onEachFeature: onEachFeature,
+          }).addTo(map);
+        }
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
