@@ -32,9 +32,7 @@ def consecutive?(array, replace_0_with)
     next if array[index-1] == array[index] - 1
     faults << {index-1 => array[index-1], index => array[index] }
   end
-
   return true if faults.length == 0
-  p 'faults', faults
   return false if faults.length > 1
   if faults[0].keys.include?(0) && faults[0][0] = 0
     array[0] = replace_0_with
@@ -61,8 +59,6 @@ def get_common_segments(counties, contours)
   to_separate = codes.map{|code| {code => []}}.reduce(&:merge)
   errors = []
   neighbours.each do |a, b|
-    p "#{a} #{b}"
-
     if (intersection = check_intersection(coordinates(a, contours), coordinates(b, contours)))
       to_separate[a] << [intersection[0], b]
       to_separate[b] << [intersection[1], a]
