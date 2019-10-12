@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Județele României</title>
+    <meta name="title" content="Județele României">
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="./index_files/scripts.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="./index_files/styles.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <div class="map" id="counties_map"></div>
+    <script>
+      var mapSources = {
+        osm: {
+          source: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
+          id: 'osm'
+        },
+        mapbox: {
+          source: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmxvcmlubmFpZGluIiwiYSI6ImNqbzlycHRmcDBkNDIzcG9qb3lnbzA5N3kifQ.5xqip9OHAjvAAbysOluPEg',
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, ' +
+          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          id: 'mapbox.streets'
+        }
+      };
+      var mapData = {
+        //map: 'osm',
+        map: 'mapbox',
+        markerOpacity: 0.75
+      };
+      mapData.source = mapSources[mapData.map].source;
+      mapData.attribution = mapSources[mapData.map].attribution;
+      mapData.id = mapSources[mapData.map].id;
+      mapData.latitude = 45.99
+      mapData.longitude = 25
+      mapData.zoom = 7
+
+      var map = L.map('counties_map', {
+        fullscreenControl: true
+      }).
+      setView([mapData.latitude, mapData.longitude], mapData.zoom);
+
+      L.tileLayer(mapData.source, {
+        attribution: mapData.attribution,
+        id: mapData.id
+      }).addTo(map);
+
+      judete = [
+        {
+          "cod_judet": "AB",
+          "judet": "Alba",
+          "resedinta": "Alba Iulia",
+          "lat": 46.07139,
+          "lon": 23.57306
+        },
+        {
+          "cod_judet": "AR",
+          "judet": "Arad",
+          "resedinta": "Arad",
+          "lat": 46.17667,
+          "lon": 21.30111
+        }
+      ]
+      var layer_judete = L.layerGroup([]).addTo(map)
+      showMarkers(layer_judete, judete)
+    
+      function onEachFeature(feature, layer) {
+        var popupContent = feature.properties.name;
+        layer.bindPopup(popupContent);
+      }
+
+      $.getJSON("./data/judete.json", function(json) {
+        L.geoJSON([json], {
+          style: function (feature) {
+            return {
+              weight: 2,
+              color: "#999",
+              opacity: 1,
+              fillColor: "#B0DE5C",
+              fillOpacity: 0.8
+            }
+          },
+
+          onEachFeature: onEachFeature,
+
+        }).addTo(map);
+          
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script>window.Popper || document.write('<script src="/js/vendor/popper.min.js"><\/script>')</script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

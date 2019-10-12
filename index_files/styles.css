@@ -1,0 +1,36 @@
+.map {
+  height: calc(100vh - 70px);
+  height: -o-calc(100vh - 70px); /* opera */
+  height: -webkit-calc(100vh - 70px); /* google, safari */
+  height: -moz-calc(100vh - 70px); /* firefox */
+}
+.icon-div .icon-container {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  /* border:solid 1px red; */
+
+  margin: -32px -16px;
+  position: relative;
+}
+
+.icon-div .icon-text {
+  border-radius: 3px;
+  background-color: #737934;
+  color: white;
+  padding: 2px 4px;
+  display: inline-block;
+  position: absolute;
+  bottom: 35px;
+  left: -5px;
+}
+.icon-div .icon-text-county {
+  border-radius: 3px;
+  background-color: #347943;
+  color: white;
+  padding: 2px 4px;
+  display: inline-block;
+  position: absolute;
+  bottom: 35px;
+  left: -5px;
+}
