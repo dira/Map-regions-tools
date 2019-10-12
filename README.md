@@ -29,3 +29,5 @@ Other features
 * geometrical center shown as a marker, labeled with the city name
 * county capital shown as a less visually appealing circle, on click you see the city name
 * counties colored the region they belong to
+
+![screenshot](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-12T19.26.11-romania-counties.jpg)
