@@ -13,8 +13,9 @@ Another need was to find the place were it would be optimal, from the user's poi
 ## Run the project
 
 You need a local web server to run the project. I already had PHP on my machine, so I ran
-    > php -S localhost:8080
-in the project folder, and saw the results in the browser at [localhost:8080](http://localhost:8080/)
+    Map-regions-tools$ cd web
+    Map-regions-tools$ php -S localhost:8080
+in the `web` subfolder, and saw the results in the browser at [localhost:8080](http://localhost:8080/)
 
 
 ## Status
