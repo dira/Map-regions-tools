@@ -12,8 +12,8 @@ function showMarkers(mapLayer, locations) {		// Add markers to the map
         `,
     });
   
-    var marker = L.marker([locations[key]['lat'], locations[key]['lon']],{
-      title: locations[key]['resedinta'],
+    var marker = L.marker([locations[key]['resedinta']['lat'], locations[key]['resedinta']['lon']],{
+      title: locations[key]['resedinta']['nume'],
       opacity: mapData.markerOpacity,
       icon: icon
     }).bindPopup(locations[key]['resedinta']).addTo(mapLayer);
@@ -90,4 +90,26 @@ function getPolygonCenter(coordinates) {
   a = a /2;
 
   return [cx/6/a, cy/6/a]
+}
+
+function getPolygonBoundaries(coordinates) {
+  n = coordinates.length;
+  min0 = coordinates[0][0]; max0 = min0;
+  min1 = coordinates[0][1]; max1 = min1;
+  for (var i = 1; i < n; i++) {
+    if (min0 > coordinates[i][0]) {
+      min0 = coordinates[i][0]
+    }
+    if (min1 > coordinates[i][1]) {
+      min1 = coordinates[i][1]
+    }
+    if (max0 < coordinates[i][0]) {
+      max0 = coordinates[i][0]
+    }
+    if (max1 < coordinates[i][1]) {
+      max1 = coordinates[i][1]
+    }
+  }
+
+  return [[min0, min1], [max0, max1]]
 }

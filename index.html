@@ -71,6 +71,8 @@
         showCounties(contours)
 
         var centers = getCenters(contours)
+        var centersLayer = L.layerGroup([]).addTo(map)
+        showCenters(centersLayer, centers)
 
         for (var i in info) {
           info[i]['resedinta'] = {
@@ -89,10 +91,21 @@
             }
           }
         }
-        console.log(info)
 
-        var centersLayer = L.layerGroup([]).addTo(map)
-        showCenters(centersLayer, centers)
+        for (var id in contours.features) {
+          var county = contours.features[id];
+          var boundaries = getPolygonBoundaries(county.geometry.coordinates[0])
+          console.log(boundaries)
+          for (var i in info) {
+            if (info[i]['cod_judet'] == county.properties.mnemonic) {
+              info[i]['limite'] = {
+                lat: [boundaries[0][1], boundaries[1][1]],
+                lon: [boundaries[0][0], boundaries[1][0]],
+              }
+            }
+          }
+        }
+        console.log(JSON.stringify(info))
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
