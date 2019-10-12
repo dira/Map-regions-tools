@@ -56,39 +56,43 @@
         id: mapData.id
       }).addTo(map);
 
-      $.getJSON("./data/judete-info.json", function(json) {
-        var layer_judete = L.layerGroup([]).addTo(map)
-        showMarkers(layer_judete, json)
+
+      countyInfoPromise = new Promise((resolve, reject) => {
+        $.getJSON("/data/judete-info.json", function(data) { resolve(data); });
       });
-    
-      function onEachFeature(feature, layer) {
-        var popupContent = feature.properties.name;
-        layer.bindPopup(popupContent);
-      }
+      countyContourPromise = new Promise((resolve, reject) => {
+        $.getJSON("/data/judete.json", function(data) { resolve(data); });
+      });
 
-      $.getJSON("./data/judete.json", function(json) {
-        var county_centers = []
-        var colors = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e']
-        for (var id in json.features) {
-          var county = json.features[id];
+      $.when(countyInfoPromise, countyContourPromise ).done(function (info, contours) {
+        var layer_judete = L.layerGroup([]).addTo(map)
+        showMarkers(layer_judete, info)
 
-          var center = getPolygonCenter(county.geometry.coordinates[0]);
-          county_centers.push({lon: center[0], lat: center[1], judet: county.properties.name});
-          L.geoJSON([county], {
-            style: function (feature) {
-              return {
-                weight: 1,
-                color: "#666",
-                fillColor: colors[county.properties.regionId - 1],
-                opacity: 1,
-                fillOpacity: 0.8
+        showCounties(contours)
+
+        var centers = getCenters(contours)
+
+        for (var i in info) {
+          info[i]['resedinta'] = {
+            nume: info[i]['resedinta'],
+            lat: info[i]['lat'],
+            lon: info[i]['lon']
+          }
+          delete info[i]['lat']
+          delete info[i]['lon']
+          for (var j in centers) {
+            if (centers[j].code == info[i]['cod_judet']) {
+              info[i]['centru'] = {
+                lat: centers[j].lat,
+                lon: centers[j].lon
               }
-            },
-            onEachFeature: onEachFeature,
-          }).addTo(map);
+            }
+          }
         }
+        console.log(info)
+
         var centersLayer = L.layerGroup([]).addTo(map)
-        showCenters(centersLayer, county_centers)
+        showCenters(centersLayer, centers)
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
