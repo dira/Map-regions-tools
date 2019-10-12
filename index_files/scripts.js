@@ -1,22 +1,11 @@
-function showMarkers(mapLayer, locations) {		// Add markers to the map
-  var icon;
-  var marker;
+function showResidences(mapLayer, locations) {		// Add markers to the map
   for (var key in locations) {
-    var iconName = `<div class="icon-text-county">`+locations[key]['resedinta']+`</div>`;
-    icon = new L.DivIcon({
-      className: 'icon-div',
-      popupAnchor: [-6,-42],
-      html: `
-        <div class="icon-container">
-      <img src="images/grey.png"/>
-        `,
-    });
-  
-    var marker = L.marker([locations[key]['resedinta']['lat'], locations[key]['resedinta']['lon']],{
-      title: locations[key]['resedinta']['nume'],
-      opacity: mapData.markerOpacity,
-      icon: icon
-    }).bindPopup(locations[key]['resedinta']).addTo(mapLayer);
+  L.circle([locations[key]['resedinta']['lat'], locations[key]['resedinta']['lon']],{
+      color: "#fb0",
+      fillColor: "#fb0",
+      fillOpacity: 0.3,
+      radius: 1500
+    }).bindPopup('Reședința de județ: ' + locations[key]['resedinta']['nume']).addTo(mapLayer);
   }
 }
 

@@ -65,13 +65,13 @@
       });
 
       $.when(countyInfoPromise, countyContourPromise ).done(function (info, contours) {
-        var layer_judete = L.layerGroup([]).addTo(map)
-        showMarkers(layer_judete, info)
-
         showCounties(contours)
 
-        var centers = getCenters(contours)
+        var layer_judete = L.layerGroup([]).addTo(map)
+        showResidences(layer_judete, info)
+
         var centersLayer = L.layerGroup([]).addTo(map)
+        var centers = getCenters(contours)
         showCenters(centersLayer, centers)
 
         for (var i in info) {
@@ -95,7 +95,6 @@
         for (var id in contours.features) {
           var county = contours.features[id];
           var boundaries = getPolygonBoundaries(county.geometry.coordinates[0])
-          console.log(boundaries)
           for (var i in info) {
             if (info[i]['cod_judet'] == county.properties.mnemonic) {
               info[i]['limite'] = {
@@ -105,7 +104,6 @@
             }
           }
         }
-        console.log(JSON.stringify(info))
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
