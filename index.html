@@ -56,24 +56,10 @@
         id: mapData.id
       }).addTo(map);
 
-      judete = [
-        {
-          "cod_judet": "AB",
-          "judet": "Alba",
-          "resedinta": "Alba Iulia",
-          "lat": 46.07139,
-          "lon": 23.57306
-        },
-        {
-          "cod_judet": "AR",
-          "judet": "Arad",
-          "resedinta": "Arad",
-          "lat": 46.17667,
-          "lon": 21.30111
-        }
-      ]
-      var layer_judete = L.layerGroup([]).addTo(map)
-      showMarkers(layer_judete, judete)
+      $.getJSON("./data/judete-info.json", function(json) {
+        var layer_judete = L.layerGroup([]).addTo(map)
+        showMarkers(layer_judete, json)
+      });
     
       function onEachFeature(feature, layer) {
         var popupContent = feature.properties.name;

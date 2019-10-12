@@ -1,0 +1,298 @@
+[
+  {
+    "cod_judet": "AB",
+    "judet": "Alba",
+    "resedinta": "Alba Iulia",
+    "lat": 46.07139,
+    "lon": 23.57306
+  },
+  {
+    "cod_judet": "AR",
+    "judet": "Arad",
+    "resedinta": "Arad",
+    "lat": 46.17667,
+    "lon": 21.30111
+  },
+  {
+    "cod_judet": "AG",
+    "judet": "Argeș",
+    "resedinta": "Pitești",
+    "lat": 44.86056,
+    "lon": 24.86778
+  },
+  {
+    "cod_judet": "BC",
+    "judet": "Bacău",
+    "resedinta": "Bacău",
+    "lat": 46.58333,
+    "lon": 26.91667
+  },
+  {
+    "cod_judet": "BH",
+    "judet": "Bihor",
+    "resedinta": "Oradea",
+    "lat": 47.072222222222,
+    "lon": 21.921111111111
+  },
+  {
+    "cod_judet": "BN",
+    "judet": "Bistrița-Năsăud",
+    "resedinta": "Bistrița",
+    "lat": 47.133,
+    "lon": 24.483
+  },
+  {
+    "cod_judet": "BT",
+    "judet": "Botoșani",
+    "resedinta": "Botoșani",
+    "lat": 47.733,
+    "lon": 26.683
+  },
+  {
+    "cod_judet": "BV",
+    "judet": "Brașov",
+    "resedinta": "Brașov",
+    "lat": 45.65,
+    "lon": 25.6
+  },
+  {
+    "cod_judet": "BR",
+    "judet": "Brăila",
+    "resedinta": "Brăila",
+    "lat": 45.26917,
+    "lon": 27.9575
+  },
+  {
+    "cod_judet": "B",
+    "judet": "București",
+    "resedinta": "București",
+    "lat": 44.43528,
+    "lon": 26.10278
+  },
+  {
+    "cod_judet": "BZ",
+    "judet": "Buzău",
+    "resedinta": "Buzău",
+    "lat": 45.15,
+    "lon": 26.817
+  },
+  {
+    "cod_judet": "CS",
+    "judet": "Caraș-Severin",
+    "resedinta": "Reșița",
+    "lat": 45.3,
+    "lon": 21.89028
+  },
+  {
+    "cod_judet": "CL",
+    "judet": "Călărași",
+    "resedinta": "Călărași",
+    "lat": 44.2,
+    "lon": 27.333
+  },
+  {
+    "cod_judet": "CJ",
+    "judet": "Cluj",
+    "resedinta": "Cluj-Napoca",
+    "lat": 46.76667,
+    "lon": 23.58333
+  },
+  {
+    "cod_judet": "CT",
+    "judet": "Constanța",
+    "resedinta": "Constanța",
+    "lat": 44.17333,
+    "lon": 28.63833
+  },
+  {
+    "cod_judet": "CV",
+    "judet": "Covasna",
+    "resedinta": "Sfântu Gheorghe",
+    "lat": 45.86361,
+    "lon": 25.7875
+  },
+  {
+    "cod_judet": "DB",
+    "judet": "Dâmbovița",
+    "resedinta": "Târgoviște",
+    "lat": 44.92417,
+    "lon": 25.45667
+  },
+  {
+    "cod_judet": "DJ",
+    "judet": "Dolj",
+    "resedinta": "Craiova",
+    "lat": 44.333,
+    "lon": 23.817
+  },
+  {
+    "cod_judet": "GL",
+    "judet": "Galați",
+    "resedinta": "Galați",
+    "lat": 45.43944,
+    "lon": 28.03444
+  },
+  {
+    "cod_judet": "GR",
+    "judet": "Giurgiu",
+    "resedinta": "Giurgiu",
+    "lat": 43.89111,
+    "lon": 25.95722,
+    "details": true
+  },
+  {
+    "cod_judet": "GJ",
+    "judet": "Gorj",
+    "resedinta": "Târgu Jiu",
+    "lat": 45.03389,
+    "lon": 23.27472
+  },
+  {
+    "cod_judet": "HR",
+    "judet": "Harghita",
+    "resedinta": "Miercurea Ciuc",
+    "lat": 46.35,
+    "lon": 25.8
+  },
+  {
+    "cod_judet": "HD",
+    "judet": "Hunedoara",
+    "resedinta": "Deva",
+    "lat": 45.867,
+    "lon": 22.9
+  },
+  {
+    "cod_judet": "IL",
+    "judet": "Ialomița",
+    "resedinta": "Slobozia",
+    "lat": 44.56472,
+    "lon": 27.35167
+  },
+  {
+    "cod_judet": "IS",
+    "judet": "Iași",
+    "resedinta": "Iași",
+    "lat": 47.16222,
+    "lon": 27.58889
+  },
+  {
+    "cod_judet": "IF",
+    "judet": "Ilfov",
+    "resedinta": "Buftea",
+    "lat": 44.57,
+    "lon": 25.95
+  },
+  {
+    "cod_judet": "MM",
+    "judet": "Maramureș",
+    "resedinta": "Baia Mare",
+    "lat": 47.65,
+    "lon": 23.567
+  },
+  {
+    "cod_judet": "MH",
+    "judet": "Mehedinți",
+    "resedinta": "Drobeta-Turnu Severin",
+    "lat": 44.62333,
+    "lon": 22.66778
+  },
+  {
+    "cod_judet": "MS",
+    "judet": "Mureș",
+    "resedinta": "Târgu Mureș",
+    "lat": 46.54972,
+    "lon": 24.55972
+  },
+  {
+    "cod_judet": "NT",
+    "judet": "Neamț",
+    "resedinta": "Piatra Neamț",
+    "lat": 46.9275,
+    "lon": 26.37083
+  },
+  {
+    "cod_judet": "OT",
+    "judet": "Olt",
+    "resedinta": "Slatina",
+    "lat": 44.43694,
+    "lon": 24.37
+  },
+  {
+    "cod_judet": "PH",
+    "judet": "Prahova",
+    "resedinta": "Ploiești",
+    "lat": 44.94,
+    "lon": 26.03,
+    "details": true
+  },
+  {
+    "cod_judet": "SM",
+    "judet": "Satu Mare",
+    "resedinta": "Satu Mare",
+    "lat": 47.79,
+    "lon": 22.89
+  },
+  {
+    "cod_judet": "SJ",
+    "judet": "Sălaj",
+    "resedinta": "Zalău",
+    "lat": 47.19111,
+    "lon": 23.05722
+  },
+  {
+    "cod_judet": "SB",
+    "judet": "Sibiu",
+    "resedinta": "Sibiu",
+    "lat": 45.79583,
+    "lon": 24.15222
+  },
+  {
+    "cod_judet": "SV",
+    "judet": "Suceava",
+    "resedinta": "Suceava",
+    "lat": 47.65139,
+    "lon": 26.25556
+  },
+  {
+    "cod_judet": "TR",
+    "judet": "Teleorman",
+    "resedinta": "Alexandria",
+    "lat": 43.967,
+    "lon": 25.333
+  },
+  {
+    "cod_judet": "TM",
+    "judet": "Timiș",
+    "resedinta": "Timișoara",
+    "lat": 45.79944,
+    "lon": 21.29389
+  },
+  {
+    "cod_judet": "TL",
+    "judet": "Tulcea",
+    "resedinta": "Tulcea",
+    "lat": 45.19,
+    "lon": 28.8
+  },
+  {
+    "cod_judet": "VS",
+    "judet": "Vaslui",
+    "resedinta": "Vaslui",
+    "lat": 46.63833,
+    "lon": 27.72917
+  },
+  {
+    "cod_judet": "VL",
+    "judet": "Vâlcea",
+    "resedinta": "Râmnicu Vâlcea",
+    "lat": 45.10472,
+    "lon": 24.37556
+  },
+  {
+    "cod_judet": "VN",
+    "judet": "Vrancea",
+    "resedinta": "Focșani",
+    "lat": 45.69694,
+    "lon": 27.18667
+  }
+]
