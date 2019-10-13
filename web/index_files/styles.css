@@ -12,6 +12,7 @@
 
   margin: 16px 0 0 -16px;
   position: relative;
+  opacity: 0.8;
 }
 
 .icon-div .icon-text {
