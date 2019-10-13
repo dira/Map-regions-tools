@@ -10,7 +10,7 @@ So here comes the first need: create sets of data that allow rendering Romania's
 
 Another need was to find the place were it would be optimal, from the user's point of view, to place a label on a county. For this, one solution would be to compute the geometrical center of the polygon.
 
-## Run the project
+## View the rendered map
 
 You need a local web server to run the project. I already had PHP on my machine, so I ran
     Map-regions-tools$ cd web
@@ -20,21 +20,24 @@ in the `web` subfolder, and saw the results in the browser at [localhost:8080](h
 
 ### Screenshots
 
-Simplified (112K):
+Simplified contours, raw JSON (31K):
 
-![simplified (112K)](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-13T19.48.25-romania-counties.jpg)
+![simplified, raw json (31K)](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-13T22.11.52-romania-counties.jpg)
 
-Full data (11MB):
+Simplified contours GeoJSON (112K):
 
-![full data (11MB)](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-12T19.26.11-romania-counties.jpg)
+![simplified GeoJSON (112K)](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-13T19.48.25-romania-counties.jpg)
+
+Original GeoJSON (11MB):
+
+![original GeoJSON (11MB)](https://dira-web-resources.s3.eu-central-1.amazonaws.com/github-dira/map-regions-tools/2019-10-12T19.26.11-romania-counties.jpg)
 
 ## Status
 
 Simplify counties - done
+- and saved data for a conveninent simplification tolerance and floating point precision
 
-Determine county center - done
-* wrote the `getPolygonCenter` function
-* saved the results in the `judete-info.json` file
+Determine county center - done (and removed; it's implemented in Leaflet.js)
 
 Other features
 * geometrical center shown as a county name label
