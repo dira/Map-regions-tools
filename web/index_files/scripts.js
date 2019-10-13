@@ -43,11 +43,11 @@ function showCounties(json) {
   }
 };
 
-function showCenters(mapLayer, locations) {   // Add markers to the map
+function showCenters(mapLayer, info) {   // Add markers to the map
   var icon;
   var marker;
-  for (var key in locations) {
-    var iconName = `<div class="icon-text-county">`+locations[key]['name']+`</div>`;
+  for (var key in info) {
+    var iconName = `<div class="icon-text-county">`+info[key]['judet']+`</div>`;
     icon = new L.DivIcon({
       className: 'icon-div',
       html: `
@@ -55,11 +55,11 @@ function showCenters(mapLayer, locations) {   // Add markers to the map
         `,
     });
 
-    var marker = L.marker([locations[key]['lat'], locations[key]['lon']],{
-      title: locations[key]['name'],
+    var marker = L.marker([info[key]['centru']['lat'], info[key]['centru']['lon']],{
+      title: info[key]['judet'],
       opacity: 1,
       icon: icon
-    }).bindPopup('Județul ' + locations[key]['name']).addTo(mapLayer);
+    }).bindPopup('Județul ' + info[key]['judet']).addTo(mapLayer);
   }
 }
 

@@ -71,8 +71,7 @@
         showResidences(layer_judete, info)
 
         var centersLayer = L.layerGroup([]).addTo(map)
-        var centers = getCenters(contours)
-        showCenters(centersLayer, centers)
+        showCenters(centersLayer, info)
       });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
