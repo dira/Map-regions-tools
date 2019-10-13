@@ -3,7 +3,7 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
   L.circle([locations[key]['resedinta']['lat'], locations[key]['resedinta']['lon']],{
       color: "#fb0",
       fillColor: "#fb0",
-      fillOpacity: 0.3,
+      fillOpacity: 1,
       radius: 1500
     }).bindPopup('Reședința de județ: ' + locations[key]['resedinta']['nume']).addTo(mapLayer);
   }
