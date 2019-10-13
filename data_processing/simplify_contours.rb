@@ -18,17 +18,32 @@ end
 contours_info = JSON.parse(File.read(File.join('.', 'data', 'judete.json')))
 contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}.reduce(&:merge)
 
-tolerance = 0.5
+tolerance = 0.01
 high_quality = false
 
 simplified_coordinates = {}
 contours.each do |code, value|
   polygon = contours[code]['geometry']['coordinates'][0]; polygon.length
-  simplified_contours = common_contours[code].map do |range, neighbour_code|
-    simplify(polygon[range], tolerance, high_quality)
+
+  pointer = 0
+  simplified_contours = []
+  common_contours[code].each do |range, neighbour_code|
+    if pointer != range.first
+      simplified_contours << simplify(polygon[(pointer..range.first)], tolerance, high_quality)
+    end
+    simplified_contours << simplify(polygon[range], tolerance, high_quality)
+    pointer = range.last
+  end
+  if pointer != polygon.length - 1
+    simplified_contours << simplify(polygon[(pointer..polygon.length)], tolerance, high_quality)
   end
 
-  simplified_coordinates[code] = simplified_contours.reduce([]){|acc, v| acc += v[0..-2]}
+  unified_contours = []
+  simplified_contours.each do |contour|
+    unified_contours += contour[(contour[0] == unified_contours.last ? 1 : 0)..-1]
+  end
+
+  simplified_coordinates[code] = unified_contours
 end
 
 contours_info['features'].each do |data|
