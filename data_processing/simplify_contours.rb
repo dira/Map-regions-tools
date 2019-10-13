@@ -18,7 +18,11 @@ end
 contours_info = JSON.parse(File.read(File.join('.', 'data', 'judete.json')))
 contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}.reduce(&:merge)
 
-tolerance = 0.01
+tolerance = 0.025
+# be more precise around the borders, as they are displayed
+# by the map as well, and it looks disturbing to have
+# a visually diferent region border
+border_tolerance = tolerance * 0.3
 high_quality = false
 precision = 3 # decimals after the dot, for lat and lng
 
@@ -31,7 +35,7 @@ contours.each do |code, value|
   simplified_contours = []
   common_contours[code].each do |range, neighbour_code|
     if pointer != range.first
-      simplified_contours << simplify(polygon[(pointer..range.first)], tolerance, high_quality, precision)
+      simplified_contours << simplify(polygon[(pointer..range.first)], border_tolerance, high_quality, precision)
     end
     cache_key = "#{neighbour_code}_#{code}"
     if cache[cache_key]
@@ -51,7 +55,7 @@ contours.each do |code, value|
     pointer = range.last
   end
   if pointer != polygon.length - 1
-    simplified_contours << simplify(polygon[(pointer..polygon.length)], tolerance, high_quality, precision)
+    simplified_contours << simplify(polygon[(pointer..polygon.length)], border_tolerance, high_quality, precision)
   end
 
   unified_contours = []
