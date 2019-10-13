@@ -1,8 +1,8 @@
 .map {
-  height: calc(100vh - 70px);
-  height: -o-calc(100vh - 70px); /* opera */
-  height: -webkit-calc(100vh - 70px); /* google, safari */
-  height: -moz-calc(100vh - 70px); /* firefox */
+  height: calc(100vh - 0px);
+  height: -o-calc(100vh - 0px); /* opera */
+  height: -webkit-calc(100vh - 0px); /* google, safari */
+  height: -moz-calc(100vh - 0px); /* firefox */
 }
 .icon-div .icon-container {
   width: 32px;
