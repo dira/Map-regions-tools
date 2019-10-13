@@ -83,4 +83,8 @@ contours_info = JSON.parse(File.read(File.join('.', 'data', 'judete.json')))
 counties = counties_info.map{|d| {d['cod_judet'] => d}}.reduce(&:merge)
 contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}.reduce(&:merge)
 
-p get_common_segments(counties, contours).to_json
+segments = get_common_segments(counties, contours)
+# sort by range start
+segments.sort!{|s1, s2| s1[0].first <=> s2[0].first }
+
+puts segments.to_json
