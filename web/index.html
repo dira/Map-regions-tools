@@ -61,7 +61,7 @@
         $.getJSON("/data/judete-info.json", function(data) { resolve(data); });
       });
       countyContourPromise = new Promise((resolve, reject) => {
-        $.getJSON("/data/judete-cu-granite.json", function(data) { resolve(data); });
+        $.getJSON("/data/judete-cu-granite-raw.json", function(data) { resolve(data); });
       });
 
       $.when(countyInfoPromise, countyContourPromise ).done(function (info, contours) {

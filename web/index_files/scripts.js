@@ -10,36 +10,27 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
 }
 
 function showCounties(json) {
-  function onEachFeature(feature, layer) {
-    var popupContent = feature.properties.name;
-    layer.bindPopup('Județul ' + popupContent);
-  }
   var blue = ["#003c30", "#01665e", "#35978f", "#80cdc1", "#c7eae5", "#f5f5f5"]
   var brown = ["#402404", "#f6e8c3", "#dfc27d", "#bf812d", "#8c510a", "#543005"]
   var orange = ["#cc4c02", "#ec7014", "#fe9929", "#fec44f", "#fee391", "#fff7bc", "#ffffe5"]
   var region_colors = [ orange, blue, orange, blue, orange, blue, brown, blue ]
   var region_pointers = {}
-  for (var id in json.features) {
-    var county = json.features[id];
-    region_index = county.properties.regionId - 1
+  for (var id in json) {
+    var data = json[id];
+    region_index = data[0][1] - 1
     if (region_pointers[region_index] >= 0) {
       region_pointers[region_index] = region_pointers[region_index] + 1
     } else {
       region_pointers[region_index] = 0
     }
     color = region_colors[region_index][region_pointers[region_index]];
-    L.geoJSON([county], {
-      style: function (feature) {
-        return {
-          weight: 1,
-          color: "#666",
-          fillColor: color,
-          opacity: 1,
-          fillOpacity: 0.8
-        }
-      },
-      onEachFeature: onEachFeature,
-    }).addTo(map);
+    L.polygon(data[1], {
+      weight: 1,
+      color: "#666",
+      fillColor: color,
+      opacity: 1,
+      fillOpacity: 0.8
+    }).bindPopup('Județul ' + data[0][0]).addTo(map);
   }
 };
 
