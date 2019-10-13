@@ -17,6 +17,23 @@ You need a local web server to run the project. I already had PHP on my machine,
     Map-regions-tools$ php -S localhost:8080
 in the `web` subfolder, and saw the results in the browser at [localhost:8080](http://localhost:8080/)
 
+## Simplify contours
+
+    $ cd data_processing
+
+Step 1: from full contours, get information about which contour parts overlap between counties. On my machine, it took around 30 minutes:
+
+    $ ruby find_common_contours.rb data/contours-full.geojson  > data/common-contours.json
+
+The resulting information is a JSON serialized hash (keys: county codes, values: arrays(first position: an index range, second position: the neighbour county code))
+
+Step2: from full contours, and the information about borders between counties, generate a simplified contours GeoJSON:
+
+    $ ruby simplify_contours.rb data/contours-full.geojson data/common-contours.json > data/contours-simplified.geojson
+
+Optional: Step3: from the simplified GeoJSON, generate a basic JSON (that is a lot smaller, and is used in the web app):
+
+    $ ruby geojson_to_minified_json.rb data/contours-simplified.geojson > data/contours-simplified.json
 
 ### Screenshots
 

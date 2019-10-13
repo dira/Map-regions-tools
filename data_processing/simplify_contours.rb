@@ -6,7 +6,10 @@ def simplify(points, tolerance, high_quality, precision)
   simplified.map{|h| [h[:x].round(precision), h[:y].round(precision)]}
 end
 
-common_contours = JSON.parse(File.read(File.join('.', 'data', 'common-contours.json')))
+contours_info = JSON.parse(File.read(ARGV[0]))
+contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}.reduce(&:merge)
+
+common_contours = JSON.parse(File.read(ARGV[1]))
 common_contours.each do |code, contours| 
   contours.each_with_index do |c, i| 
     # transform the Range stringified by the JSON export, into a proper ruby range.
@@ -14,9 +17,6 @@ common_contours.each do |code, contours|
     contours[i][0] = Range.new(* c[0].split('..').map(&:to_i))
   end
 end
-
-contours_info = JSON.parse(File.read(File.join('.', 'data', 'judete.json')))
-contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}.reduce(&:merge)
 
 tolerance = 0.025
 # be more precise around the borders, as they are displayed
