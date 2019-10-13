@@ -21,6 +21,8 @@ contours = contours_info['features'].map{|d| {d['properties']['mnemonic'] => d}}
 tolerance = 0.01
 high_quality = false
 
+
+cache = {}
 simplified_coordinates = {}
 contours.each do |code, value|
   polygon = contours[code]['geometry']['coordinates'][0]; polygon.length
@@ -31,7 +33,24 @@ contours.each do |code, value|
     if pointer != range.first
       simplified_contours << simplify(polygon[(pointer..range.first)], tolerance, high_quality)
     end
-    simplified_contours << simplify(polygon[range], tolerance, high_quality)
+
+
+    cache_key = "#{neighbour_code}_#{code}"
+    if cache[cache_key]
+      simplification = cache[cache_key]
+      neighbour_polygon = contours[neighbour_code]['geometry']['coordinates'][0]
+      neighbour_range = common_contours[neighbour_code].detect{|v| v[1] == code}[0]
+      if polygon[range] == neighbour_polygon[neighbour_range]
+        simplified_contours << simplification
+      else
+        simplified_contours << simplification.reverse
+      end
+    else
+      simplification = simplify(polygon[range], tolerance, high_quality)
+      cache["#{code}_#{neighbour_code}"] = simplification
+      simplified_contours << simplification
+      
+    end
     pointer = range.last
   end
   if pointer != polygon.length - 1
