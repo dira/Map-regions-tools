@@ -3,7 +3,7 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
   L.circle([locations[key]['resedinta']['lat'], locations[key]['resedinta']['lon']],{
       color: "#fb0",
       fillColor: "#fb0",
-      fillOpacity: 0.3,
+      fillOpacity: 1,
       radius: 1500
     }).bindPopup('Reședința de județ: ' + locations[key]['resedinta']['nume']).addTo(mapLayer);
   }
@@ -12,17 +12,28 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
 function showCounties(json) {
   function onEachFeature(feature, layer) {
     var popupContent = feature.properties.name;
-    layer.bindPopup(popupContent);
+    layer.bindPopup('Județul ' + popupContent);
   }
-  var colors = ['#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e']
+  var blue = ["#003c30", "#01665e", "#35978f", "#80cdc1", "#c7eae5", "#f5f5f5"]
+  var brown = ["#402404", "#f6e8c3", "#dfc27d", "#bf812d", "#8c510a", "#543005"]
+  var orange = ["#cc4c02", "#ec7014", "#fe9929", "#fec44f", "#fee391", "#fff7bc", "#ffffe5"]
+  var region_colors = [ orange, blue, orange, blue, orange, blue, brown, blue ]
+  var region_pointers = {}
   for (var id in json.features) {
     var county = json.features[id];
+    region_index = county.properties.regionId - 1
+    if (region_pointers[region_index] >= 0) {
+      region_pointers[region_index] = region_pointers[region_index] + 1
+    } else {
+      region_pointers[region_index] = 0
+    }
+    color = region_colors[region_index][region_pointers[region_index]];
     L.geoJSON([county], {
       style: function (feature) {
         return {
           weight: 1,
           color: "#666",
-          fillColor: colors[county.properties.regionId - 1],
+          fillColor: color,
           opacity: 1,
           fillOpacity: 0.8
         }
@@ -39,18 +50,16 @@ function showCenters(mapLayer, locations) {   // Add markers to the map
     var iconName = `<div class="icon-text-county">`+locations[key]['name']+`</div>`;
     icon = new L.DivIcon({
       className: 'icon-div',
-      popupAnchor: [-6,-42],
       html: `
-        <div class="icon-container">`+iconName+`
-      <img src="images/green.png"/>
+        <div class="icon-container">`+iconName+`</div>
         `,
     });
 
     var marker = L.marker([locations[key]['lat'], locations[key]['lon']],{
       title: locations[key]['name'],
-      opacity: mapData.markerOpacity,
+      opacity: 1,
       icon: icon
-    }).bindPopup('centrul').addTo(mapLayer);
+    }).bindPopup('Județul ' + locations[key]['name']).addTo(mapLayer);
   }
 }
 
