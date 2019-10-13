@@ -12,7 +12,7 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
 function showCounties(json) {
   function onEachFeature(feature, layer) {
     var popupContent = feature.properties.name;
-    layer.bindPopup(popupContent);
+    layer.bindPopup('Județul ' + popupContent);
   }
   var blue = ["#003c30", "#01665e", "#35978f", "#80cdc1", "#c7eae5", "#f5f5f5"]
   var brown = ["#402404", "#f6e8c3", "#dfc27d", "#bf812d", "#8c510a", "#543005"]
@@ -50,18 +50,16 @@ function showCenters(mapLayer, locations) {   // Add markers to the map
     var iconName = `<div class="icon-text-county">`+locations[key]['name']+`</div>`;
     icon = new L.DivIcon({
       className: 'icon-div',
-      popupAnchor: [-6,-42],
       html: `
-        <div class="icon-container">`+iconName+`
-      <img src="images/green.png"/>
+        <div class="icon-container">`+iconName+`</div>
         `,
     });
 
     var marker = L.marker([locations[key]['lat'], locations[key]['lon']],{
       title: locations[key]['name'],
-      opacity: mapData.markerOpacity,
+      opacity: 1,
       icon: icon
-    }).bindPopup('centrul').addTo(mapLayer);
+    }).bindPopup('Județul ' + locations[key]['name']).addTo(mapLayer);
   }
 }
 
