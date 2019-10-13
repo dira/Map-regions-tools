@@ -17,20 +17,20 @@ function showCounties(json) {
   var region_pointers = {}
   for (var id in json) {
     var data = json[id];
-    region_index = data[0][1] - 1
+    region_index = data['regiune'] - 1
     if (region_pointers[region_index] >= 0) {
       region_pointers[region_index] = region_pointers[region_index] + 1
     } else {
       region_pointers[region_index] = 0
     }
     color = region_colors[region_index][region_pointers[region_index]];
-    L.polygon(data[1], {
+    L.polygon(data['contur'], {
       weight: 1,
       color: "#666",
       fillColor: color,
       opacity: 1,
       fillOpacity: 0.8
-    }).bindPopup('Județul ' + data[0][0]).addTo(map);
+    }).bindPopup('Județul ' + data['nume']).addTo(map);
   }
 };
 
@@ -38,7 +38,7 @@ function showCenters(mapLayer, info) {   // Add markers to the map
   var icon;
   var marker;
   for (var key in info) {
-    var iconName = `<div class="icon-text-county">`+info[key]['judet']+`</div>`;
+    var iconName = `<div class="icon-text-county">`+info[key]['nume']+`</div>`;
     icon = new L.DivIcon({
       className: 'icon-div',
       html: `
@@ -47,10 +47,10 @@ function showCenters(mapLayer, info) {   // Add markers to the map
     });
 
     var marker = L.marker([info[key]['centru']['lat'], info[key]['centru']['lon']],{
-      title: info[key]['judet'],
+      title: info[key]['nume'],
       opacity: 1,
       icon: icon
-    }).bindPopup('Județul ' + info[key]['judet']).addTo(mapLayer);
+    }).bindPopup('Județul ' + info[key]['nume']).addTo(mapLayer);
   }
 }
 
