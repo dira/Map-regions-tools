@@ -17,9 +17,11 @@ See simplified GeoJSON in the [data_processing/results](https://github.com/dira/
 ## View the rendered map (with colors <3)
 
 You need a local web server to run the project. I already had PHP on my machine, so I ran
-    Map-regions-tools$ cd web
-    Map-regions-tools$ php -S localhost:8080
-in the `web` subfolder, and saw the results in the browser at [localhost:8080](http://localhost:8080/)
+
+    $ cd web
+    $ php -S localhost:8080
+    
+in the `web` subfolder, and see the results in the browser at [localhost:8080](http://localhost:8080/)
 
 ## Simplify contours
 
