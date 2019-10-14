@@ -77,4 +77,12 @@ contours_info['features'].each do |data|
   data['geometry']['coordinates'][0] = s
 end
 
+# Bucharest is completely surrounded by Ilfov
+# I didn't take into accounts arrays of coordinates.. so for now,
+# bruteforce hardcoding: move the Bucharest simplified contour, to the
+# second line of Ilfov
+ilfov = contours_info['features'].find{|data| data['properties']['mnemonic'] == 'IF'}
+bucharest = contours_info['features'].find{|data| data['properties']['mnemonic'] == 'B'}
+ilfov['geometry']['coordinates'][1] = bucharest['geometry']['coordinates'][0]
+
 puts contours_info.to_json
