@@ -7,10 +7,14 @@ Which is great, but quite heavy to load through the internet (11MB) and to rende
 
 So here comes the first need: create sets of data that allow rendering Romania's counties with less precision, but a lot greater flexibility. Ideal: about 30 points per county.
 
+Another need was to find the place were it would be optimal, from the user's point of view, to place a label on a county. For this, one solution would be to compute the geometrical center of the polygon. (Later I found out that, 
+having the polygon shape, you can use Leaflet for this, so no need for math :/)
 
-Another need was to find the place were it would be optimal, from the user's point of view, to place a label on a county. For this, one solution would be to compute the geometrical center of the polygon.
+## View samples
 
-## View the rendered map
+See simplified GeoJSON in the [data_processing/results](https://github.com/dira/Map-regions-tools/tree/master/data_processing/results) folder.
+
+## View the rendered map (with colors <3)
 
 You need a local web server to run the project. I already had PHP on my machine, so I ran
     Map-regions-tools$ cd web
