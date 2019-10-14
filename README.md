@@ -27,9 +27,11 @@ Step 1: from full contours, get information about which contour parts overlap be
 
 The resulting information is a JSON serialized hash (keys: county codes, values: arrays(first position: an index range, second position: the neighbour county code))
 
-Step2: from full contours, and the information about borders between counties, generate a simplified contours GeoJSON:
+ Step2: from full contours, and the information about borders between counties, generate a GeoJSON with simplifed contours:
 
     $ ruby simplify_contours.rb data/contours-full.geojson data/common-contours.json > data/contours-simplified.geojson
+
+You can play with the parameters (tolerance, border_tolerance, high_quality, precision) to tweak the result to lower or higher fidelity.
 
 Optional: Step3: from the simplified GeoJSON, generate a basic JSON (that is a lot smaller, and is used in the web app):
 
