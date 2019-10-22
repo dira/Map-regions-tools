@@ -10,8 +10,14 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
 }
 
 function showCounties(json) {
+  var fillOpacity = 0.9;
   var color_mapping = {"AB":1,"AG":1,"AR":2,"B":1,"BC":1,"BH":3,"BN":1,"BR":1,"BT":2,"BV":3,"BZ":2,"CJ":2,"CL":1,"CS":1,"CT":2,"CV":4,"DB":2,"DJ":1,"GJ":2,"GL":4,"GR":3,"HD":3,"HR":2,"IF":4,"IL":3,"IS":1,"MH":3,"MM":4,"MS":4,"NT":4,"OT":2,"PH":1,"SB":2,"SJ":1,"SM":2,"SV":3,"TL":3,"TM":4,"TR":4,"VL":4,"VN":3,"VS":2}
-  var colors = ["#fee090", "#e08214", "#b35806", "#fee0b6"];
+  //var colors = [ "#fe9929", "#fec44f", "#fee391", "#fff7bc", "#ffffe5"] // light yellows
+  var colors = ["#fee090", "#e08214", "#b35806", "#fee0b6"]; fillOpacity = 0.7; // orange, contrast
+  // var colors = ["#7c4937", "#b98352", "#e2be32", "#655d5b"]; // determined
+  // var colors = ["#55595f", "#c5af62", "#b18322", "#49290f"]; fillOpacity = 0.4; // light scandinavian
+  // var colors = [ "#d67937", "#f0bbdb", "#ffc077", "#955d51"]; fillOpacity = 0.6;  // pink cake
+  // var colors = [ "#9b726e", "#e6b7c1", "#7cb2d1", "#593780"]; fillOpacity = 0.6; // fun with blue and purple
 
   for (var id in json) {
     var data = json[id];
@@ -21,7 +27,7 @@ function showCounties(json) {
       color: "#666",
       fillColor: color,
       opacity: 1,
-      fillOpacity: 0.8
+      fillOpacity: fillOpacity
     }).bindPopup('Județul ' + data['nume']).addTo(map);
   }
 };
