@@ -4,15 +4,27 @@
   height: -webkit-calc(100vh - 0px); /* google, safari */
   height: -moz-calc(100vh - 0px); /* firefox */
 }
+.info {
+  padding: 4px 12px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  /* background: rgba(223, 247, 191, 0.8); */
+  background: rgba(239, 227, 193, 0.8);
+  /* box-shadow: 0 0 15px rgba(0,0,0,0.2); */
+  box-shadow: 0 0 15px rgba(198, 149, 76, 0.8);
+  border-radius: 5px;
+  /* width:70%; */
+  /* text-align: center; */
+}
+
 .icon-div .icon-container {
   width: 32px;
   height: 32px;
   text-align: center;
   /* border:solid 1px red; */
 
-  margin: 16px 0 0 -16px;
+  /* margin: -32px -16px; */
   position: relative;
-  opacity: 0.8;
 }
 
 .icon-div .icon-text {
@@ -25,13 +37,14 @@
   bottom: 35px;
   left: -5px;
 }
+
 .icon-div .icon-text-county {
   border-radius: 3px;
-  background-color: #347943;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0c2d02;
   padding: 2px 4px;
   display: inline-block;
   position: absolute;
-  bottom: 35px;
-  left: -5px;
+  bottom: 10px;
+  left: -15px;
 }

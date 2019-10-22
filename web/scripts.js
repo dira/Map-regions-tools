@@ -10,20 +10,12 @@ function showResidences(mapLayer, locations) {		// Add markers to the map
 }
 
 function showCounties(json) {
-  var blue = ["#003c30", "#01665e", "#35978f", "#80cdc1", "#c7eae5", "#f5f5f5"]
-  var brown = ["#402404", "#f6e8c3", "#dfc27d", "#bf812d", "#8c510a", "#543005"]
-  var orange = ["#cc4c02", "#ec7014", "#fe9929", "#fec44f", "#fee391", "#fff7bc", "#ffffe5"]
-  var region_colors = [ orange, blue, orange, blue, orange, blue, brown, blue ]
-  var region_pointers = {}
+  var color_mapping = {"AB":1,"AG":1,"AR":2,"B":1,"BC":1,"BH":3,"BN":1,"BR":1,"BT":2,"BV":3,"BZ":2,"CJ":2,"CL":1,"CS":1,"CT":2,"CV":4,"DB":2,"DJ":1,"GJ":2,"GL":4,"GR":3,"HD":3,"HR":2,"IF":4,"IL":3,"IS":1,"MH":3,"MM":4,"MS":4,"NT":4,"OT":2,"PH":1,"SB":2,"SJ":1,"SM":2,"SV":3,"TL":3,"TM":4,"TR":4,"VL":4,"VN":3,"VS":2}
+  var colors = ["#fee090", "#e08214", "#b35806", "#fee0b6"];
+
   for (var id in json) {
     var data = json[id];
-    region_index = data['regiune'] - 1
-    if (region_pointers[region_index] >= 0) {
-      region_pointers[region_index] = region_pointers[region_index] + 1
-    } else {
-      region_pointers[region_index] = 0
-    }
-    color = region_colors[region_index][region_pointers[region_index]];
+    color = colors[color_mapping[data['cod']] - 1]
     L.polygon(data['contur'], {
       weight: 1,
       color: "#666",
