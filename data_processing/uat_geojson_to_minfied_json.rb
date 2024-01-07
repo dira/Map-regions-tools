@@ -5,7 +5,7 @@ geojson = JSON.parse(File.read(File.join('.', ARGV[0])))
 def map_polygon(coordinates)
   coordinates.map do |shape|
     shape.map do |a|
-      a.reverse
+	a.reverse.map{|coord| coord.truncate(4) }
     end
   end 
 end
